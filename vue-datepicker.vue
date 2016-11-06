@@ -435,33 +435,9 @@ exports.default = {
     }
   },
   data: function data() {
-    function hours() {
-      var list = [];
-      var hour = 24;
-      while (hour > 0) {
-        hour--;
-        list.push({
-          checked: false,
-          value: hour < 10 ? '0' + hour : hour
-        });
-      }
-      return list;
-    }
-    function mins() {
-      var list = [];
-      var min = 60;
-      while (min > 0) {
-        min--;
-        list.push({
-          checked: false,
-          value: min < 10 ? '0' + min : min
-        });
-      }
-      return list;
-    }
     return {
-      hours: hours(),
-      mins: mins(),
+      hours: this.setMins(),
+      mins: this.setHours(),
       showInfo: {
         hour: false,
         day: false,
@@ -495,6 +471,30 @@ exports.default = {
     pad: function pad(n) {
       n = Math.floor(n);
       return n < 10 ? '0' + n : n;
+    },
+    setHours: function setHours(){
+      var list = [];
+      var hour = 24;
+      while (hour > 0) {
+        hour--;
+        list.push({
+          checked: false,
+          value: hour < 10 ? '0' + hour : hour
+        });
+      }
+      return list;
+    },
+    setMins: function setMins(){
+      var list = [];
+      var min = 60;
+      while (min > 0) {
+        min--;
+        list.push({
+          checked: false,
+          value: min < 10 ? '0' + min : min
+        });
+      }
+      return list;
     },
     nextMonth: function nextMonth(type) {
       var next = null;
